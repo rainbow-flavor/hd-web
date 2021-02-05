@@ -1,13 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react'
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
 
-class Calendar extends Component {
+export default class DemoApp extends React.Component {
+
     render() {
         return (
-            <div>
-sssss
-            </div>
-        );
+            <FullCalendar
+                plugins={[dayGridPlugin, interactionPlugin]}
+                dateClick={this.handleDateClick}
+                height={'93vh'}
+            />
+        )
     }
-}
 
-export default Calendar;
+    handleDateClick = (arg) => { // bind with an arrow function
+        alert(arg.dateStr)
+    }
+
+}

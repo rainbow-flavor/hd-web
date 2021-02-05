@@ -4,6 +4,7 @@ import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import Navigation from './navigation/Navigation';
 import SideNavigation from './listgroup/SideNavigation';
+import Calander from './mainContent/Calendar'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -15,14 +16,15 @@ class App extends Component {
         <Navigation></Navigation>
         <Container fluid>
           <Row>
-            <Col xs={2} className="side-bar px-0 vh-100" >
+            <Col xs={2} className="side-bar px-0">
               <SideNavigation></SideNavigation>
             </Col>
-            <Col xs={10}>
+            <Col xs={10} className="p-3">
+              <Calander ></Calander>
             </Col>
           </Row>
         </Container>
-      </div>
+      </div >
     );
   }
 }
