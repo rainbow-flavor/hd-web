@@ -5,7 +5,7 @@ import { Nav } from 'react-bootstrap';
 class navigation extends Component {
     render() {
         return (
-            <Navbar bg="primary" fixed="top" variant="dark">
+            <Navbar bg="primary" variant="dark">
                 <Navbar.Brand href="#home">LOGO</Navbar.Brand>
                 <Nav className="ml-auto">
                     <Nav.Link href="#edit">EDIT PROFILE</Nav.Link>
