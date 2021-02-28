@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ListGroup } from 'react-bootstrap';
-import { Container } from 'react-bootstrap';
 
 class sideNavigation extends Component {
     render() {
