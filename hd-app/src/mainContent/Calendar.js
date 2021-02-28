@@ -11,6 +11,7 @@ export default class DemoApp extends React.Component {
             <FullCalendar
                 plugins={[dayGridPlugin, interactionPlugin,googlecalendarPlugin]}
                 dateClick={this.handleDateClick}
+                eventClick={this.handleEventClick}
                 height={'93vh'}
                 googleCalendarApiKey="AIzaSyA8Xs_pKqsDGL8UX9NEA-BZlHbBo3udH6c"
                 eventSources={[
@@ -26,8 +27,11 @@ export default class DemoApp extends React.Component {
     }
 
     handleDateClick = (arg) => { // bind with an arrow function
-        alert(arg.dateStr)
-        
+        console.log(arg.date);
+    }
+
+    handleEventClick = (e) =>{
+        console.log(e.event.title);
     }
 
 }

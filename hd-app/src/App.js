@@ -19,8 +19,10 @@ class App extends Component {
             <Col xs={2} className="side-bar px-0">
               <SideNavigation></SideNavigation>
             </Col>
-            <Col xs={10} className="p-3">
+            <Col xs={8} className="p-3">
               <Calander ></Calander>
+            </Col>
+            <Col xs={2} className="side-bar px-0">
             </Col>
           </Row>
         </Container>
