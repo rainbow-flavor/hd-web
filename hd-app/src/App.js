@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 class App extends Component {
+
   render() {
     return (
       <div>
@@ -20,9 +21,7 @@ class App extends Component {
               <SideNavigation></SideNavigation>
             </Col>
             <Col xs={8} className="p-3">
-              <Calander ></Calander>
-            </Col>
-            <Col xs={2} className="side-bar px-0">
+              <Calander onChange={this.changeDayEventText} ></Calander>
             </Col>
           </Row>
         </Container>
