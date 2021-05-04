@@ -184,3 +184,4 @@ out/
 
 ### VS Code ###
 .vscode/
+/.java-version
