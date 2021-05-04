@@ -8,6 +8,6 @@ public class TestRequestMapping {
 
     @GetMapping
     public String index() {
-        return "index";
+        return "contents/index";
     }
 }
