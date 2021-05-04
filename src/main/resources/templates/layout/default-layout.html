@@ -11,14 +11,12 @@
 <div class="d-flex" id="wrapper">
     <!--sidebar-->
     <th:block th:replace="fragments/sidebar :: sidebar"/>
-
-    <div>
-        <!--content-->
+    <div class="vw-100">
         <div id="page-content-wrapper">
+            <!--content-->
             <th:block th:replace="fragments/header :: header"/>
             <th:block layout:fragment="content"/>
         </div>
-
         <!--footer-->
         <th:block th:replace="fragments/footer :: footer"/>
     </div>
