@@ -1,18 +1,18 @@
 package com.rainbowflavor.hdcweb.controller;
 
 import com.rainbowflavor.hdcweb.calendar.DateData;
+import com.rainbowflavor.hdcweb.dto.CalendarDto;
 import com.rainbowflavor.hdcweb.string.ConstantUrl;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.bridge.IMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 @Slf4j
 @Controller
@@ -24,10 +24,18 @@ public class HomeController {
         return "page/login";
     }
 
+    @PostMapping(value = "/schedules")
+    public String schedules(@ModelAttribute CalendarDto calendarDto) {
+        System.out.println("startScheduleDate = " + calendarDto.getStartScheduleDate());
+        System.out.println("startScheduleDate = " + calendarDto.getEndScheduleDate());
+        System.out.println("startScheduleDate = " + calendarDto.getScheduleDetail());
+        //save
+        return "redirect:/index";
+    }
+
     @GetMapping
     public String calendar(Model model, HttpServletRequest req, DateData dateData) {
 
-        log.info("log = {}", req.getContextPath());
         Calendar cal = Calendar.getInstance();
         DateData calendarData;
         //검색 날짜
@@ -66,7 +74,6 @@ public class HomeController {
                 dateList.add(calendarData);
             }
         }
-        System.out.println(dateList);
 
         //배열에 담음
         model.addAttribute("dateList", dateList);		//날짜 데이터 배열
