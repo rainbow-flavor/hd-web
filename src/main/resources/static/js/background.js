@@ -11,8 +11,6 @@ function getMonth() {
 function generateSeasonalQuery() {
     //zero is january
     const month = getMonth();
-    console.log(typeof(month));
-    console.log(typeof(1));
     if (2 <= month && month <= 4) {
         return `${imageUrl}spring,dark,season`;
     } else if (5 <= month && month <= 7) {
