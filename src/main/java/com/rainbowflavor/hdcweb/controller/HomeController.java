@@ -1,9 +1,12 @@
-package com.rainbowflavor.hdcweb.calendar;
+package com.rainbowflavor.hdcweb.controller;
 
+import com.rainbowflavor.hdcweb.calendar.DateData;
+import com.rainbowflavor.hdcweb.string.ConstantUrl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -13,9 +16,10 @@ import java.util.Map;
 
 @Slf4j
 @Controller
-public class CalendarController {
+@RequestMapping(value= ConstantUrl.INDEX)
+public class HomeController {
 
-    @GetMapping(value = "/contents/calendar")
+    @GetMapping
     public String calendar(Model model, HttpServletRequest req, DateData dateData) {
 
         log.info("log = {}", req.getContextPath());
