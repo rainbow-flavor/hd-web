@@ -1,5 +1,6 @@
 package com.rainbowflavor.hdcweb.domain;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,18 +12,21 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Data
-public class User {
-    @Id @Column(name="USER_ID") @Setter(AccessLevel.NONE)
+public class User{
+    @Id @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
+    @NotNull
     private String name;
 
     @Column
+    @NotNull
     private String username;
 
     @Column
+    @NotNull
     private String password;
 
     @Column
@@ -43,8 +47,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<UserRole> roles = new HashSet<>();
 
-    @OneToMany
-    @JoinColumn(name = "id")
+    @OneToMany(mappedBy = "user")
     private List<Schedule> schedule;
 
     @Builder

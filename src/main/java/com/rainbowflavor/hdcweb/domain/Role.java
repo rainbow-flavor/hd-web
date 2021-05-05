@@ -1,15 +1,17 @@
 package com.rainbowflavor.hdcweb.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@NoArgsConstructor
 @Data
 public class Role {
-    @Id @Column(name="ROLE_ID")
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -17,5 +19,9 @@ public class Role {
     private ERole role;
 
     @OneToMany(mappedBy = "role")
-    private List<UserRole> userRoles = new ArrayList<>();
+    private Set<UserRole> userRoles = new HashSet<>();
+
+    public Role(ERole role) {
+        this.role = role;
+    }
 }
