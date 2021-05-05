@@ -17,12 +17,12 @@
             <!--날짜 네비게이션  -->
             <div class="navigation">
                 <a class="before_after_year"
-                   th:href="@{./calendar(year=${todayInfo.searchYear}-1,month=${todayInfo.searchMonth}-1)}">
+                   th:href="@{${#httpServletRequest.requestURI}(year=${todayInfo.searchYear}-1,month=${todayInfo.searchMonth}-1)}">
                     &lt;&lt;
                     <!-- 이전해 -->
                 </a>
                 <a class="before_after_month"
-                   th:href="@{./calendar(year=${todayInfo.beforeYear},month=${todayInfo.beforeMonth})}">
+                   th:href="@{${#httpServletRequest.requestURI}(year=${todayInfo.beforeYear},month=${todayInfo.beforeMonth})}">
                     &lt;
                     <!-- 이전달 -->
                 </a>
@@ -30,12 +30,12 @@
                 <span th:if="${todayInfo.searchMonth < 10}" th:text="${'0'+todayInfo.searchMonth}"></span>
                 <span th:unless="${todayInfo.searchMonth < 10}" th:text="${todayInfo.searchMonth}"></span>
                 <a class="before_after_month"
-                   th:href="@{./calendar(year=${todayInfo.afterYear},month=${todayInfo.afterMonth})}">
+                   th:href="@{${#httpServletRequest.requestURI}(year=${todayInfo.afterYear},month=${todayInfo.afterMonth})}">
                     <!-- 다음달 -->
                     &gt;
                 </a>
                 <a class="before_after_year"
-                   th:href="@{./calendar(year=${todayInfo.searchYear}+1,month=${todayInfo.searchMonth}-1)}">
+                   th:href="@{${#httpServletRequest.requestURI}(year=${todayInfo.searchYear}+1,month=${todayInfo.searchMonth}-1)}">
                     <!-- 다음해 -->
                     &gt;&gt;
                 </a>

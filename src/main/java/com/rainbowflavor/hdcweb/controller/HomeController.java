@@ -19,6 +19,11 @@ import java.util.Map;
 @RequestMapping(value= ConstantUrl.INDEX)
 public class HomeController {
 
+    @GetMapping(value = "/login")
+    public String loginPage() {
+        return "page/login";
+    }
+
     @GetMapping
     public String calendar(Model model, HttpServletRequest req, DateData dateData) {
 
