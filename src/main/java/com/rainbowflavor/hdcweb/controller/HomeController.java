@@ -21,7 +21,7 @@ public class HomeController {
 
     @GetMapping(value = "/login")
     public String loginPage() {
-        return "page/login";
+        return "signin";
     }
 
     @PostMapping(value = "/schedules")
