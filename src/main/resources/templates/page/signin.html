@@ -45,39 +45,7 @@
     </form>
   </div>
 </div>
-
-
-<div id="container-signup-card" class="card">
-  <div class="card-body">
-    <form class="form-signin" action="/index" method="post">
-      <div class="text-center mb-4">
-        <h2 class="h2 mb-3 font-weight-normal">Handok Login</h2>
-      </div>
-
-      <div class="form-label-group">
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputEmail">Email address</label>
-      </div>
-
-      <div class="form-label-group">
-        <input type="password" class="form-control" placeholder="Password" required>
-        <label for="inputPassword">Password</label>
-      </div>
-
-      <div class="checkbox mb-4">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Sign In</button>
-      <hr>
-      <h5 class="h5 font-weight-normal text-center">Don't have an Account?</h5>
-      <h3 class="h3 mb-3 font-weight-normal text-center">Register Here</h3>
-      <button class="btn btn-lg btn-outline-info btn-block" type="button">Sign Up</button>
-      <p class="mt-3 mb-3 text-muted text-center">Copyright&copy; 2021<br>irostub & diph All rights reserved</p>
-    </form>
-  </div>
-</div>
+<th:block th:replace="page/signup :: signup-card"/>
 <th:block th:replace="fragments/scripts ::scripts"/>
 <script type="text/javascript" src="/js/login.js"></script>
 <script type="text/javascript" src="/js/background.js"></script>

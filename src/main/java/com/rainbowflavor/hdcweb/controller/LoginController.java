@@ -16,6 +16,6 @@ public class LoginController {
     @GetMapping
     public String loginPage(HttpServletRequest request){
         log.info("Login Controller = {}", request);
-        return "page/login";
+        return "page/signin";
     }
 }
