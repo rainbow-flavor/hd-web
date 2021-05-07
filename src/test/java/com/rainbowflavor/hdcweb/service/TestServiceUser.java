@@ -10,17 +10,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Date;
 
 @SpringBootTest
-class TestServiceTest {
+class TestServiceUser {
 
-    @Autowired TestService testService;
+    @Autowired
+    UserService userService;
     @Autowired JpaRoleRepository jpaRoleRepository;
-
+    @Autowired JpaRoleRepository roleRepository;
 
     @Test
     @DisplayName("User and Role Insert")
     void join() {
         User user = User.builder()
-                .username("iro")
                 .address("seoul")
                 .email("irostub@gmail.com")
                 .position("top")
@@ -30,7 +30,7 @@ class TestServiceTest {
                 .password("qw1234")
                 .build();
 
-        testService.joinUser(user);
-    }
+        userService.joinUser(user);
 
+    }
 }
