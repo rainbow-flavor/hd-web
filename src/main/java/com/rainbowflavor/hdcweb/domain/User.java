@@ -11,6 +11,8 @@ import java.util.Set;
 
 @NoArgsConstructor
 @Entity
+@Table(uniqueConstraints =
+        @UniqueConstraint(columnNames = "email"))
 @Data
 public class User{
     @Id @Setter(AccessLevel.NONE)
@@ -20,10 +22,6 @@ public class User{
     @Column
     @NotNull
     private String name;
-
-    @Column
-    @NotNull
-    private String username;
 
     @Column
     @NotNull
@@ -51,9 +49,8 @@ public class User{
     private List<Schedule> schedule;
 
     @Builder
-    public User(String name, String username, String password, String email, String position, String phone, String address, Date birth) {
+    public User(String name, String password, String email, String position, String phone, String address, Date birth) {
         this.name = name;
-        this.username = username;
         this.password = password;
         this.email = email;
         this.position = position;

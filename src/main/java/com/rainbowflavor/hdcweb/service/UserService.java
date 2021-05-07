@@ -1,5 +1,6 @@
 package com.rainbowflavor.hdcweb.service;
 
+import com.rainbowflavor.hdcweb.domain.ERole;
 import com.rainbowflavor.hdcweb.domain.Role;
 import com.rainbowflavor.hdcweb.domain.User;
 import com.rainbowflavor.hdcweb.domain.UserRole;
@@ -10,10 +11,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Transactional
 @RequiredArgsConstructor
 @Service
-public class TestService {
+public class UserService {
     private final JpaRoleRepository roleRepository;
     private final JpaUserRepository userRepository;
     private final JpaUserRoleRepository userRoleRepository;
@@ -21,7 +24,7 @@ public class TestService {
     public Long joinUser(User user) {
         UserRole userRole = new UserRole();
         User saveUser = userRepository.save(user);
-        Role findRole = roleRepository.getOne(1L);
+        Role findRole = roleRepository.findByRole(ERole.ROLE_ADMIN);
         userRole.setUser(saveUser);
         userRole.setRole(findRole);
         UserRole saveUserRole = userRoleRepository.save(userRole);
