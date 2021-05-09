@@ -7,3 +7,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface JpaRoleRepository extends JpaRepository<Role, Long> {
     Role findByRole(ERole eRole);
 }
+//sequel pro
