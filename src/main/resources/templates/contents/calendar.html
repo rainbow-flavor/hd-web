@@ -42,9 +42,9 @@
                 </a>
             </div>
 
-            <!-- <div class="today_button_div"> -->
-            <!-- <input type="button" class="today_button" onclick="javascript:location.href='/calendar'" value="go today"/> -->
-            <!-- </div> -->
+            <div class="today_button_div">
+            <input type="button" class="today_button" onclick="javascript:location.href='/index'" value="go today"/>
+            </div>
             <table class="calendar_body">
 
                 <thead>
@@ -76,27 +76,25 @@
                 <th:block th:each="dat,dateStat : ${dateList}">
                     <tr th:if="${dateStat.index}%7==0">
                     </tr>
-                    <td class="sun_day" th:if="${dateStat.index}%7==0"><!-- TODO: 일요일 날짜 안나옴 평일은 어떻게 출력할건지 -->
+                    <td class="sun_day" th:if="${dateStat.index}%7==0 and ${dat.value} != 'today'">
                         <div class="sun" th:text="${dat.date}">
                         </div>
                     </td>
-                    <th:block th:unless="${dateStat.index}%7==0">
-                        <td class="today" th:if="${dat.value} == 'today'">
-                            <div class="date" th:text="${dat.date}">
+                    <td class="today" th:if="${dat.value} == 'today'">
+                        <div class="date" th:text="${dat.date}">
 
-                            </div>
-                        </td>
-                        <td class="sat_day" th:if="${dateStat.index}==6">
-                            <div class="sat" th:text="${dat.date}">
+                        </div>
+                    </td>
+                    <td class="sat_day" th:if="${dateStat.index}==6">
+                        <div class="sat" th:text="${dat.date}">
 
-                            </div>
-                        </td>
-                        <td class="normal_day"
-                            th:unless="${dateStat.index}==6 or ${dat.value}=='today' or ${dateStat.index}%7==0">
-                            <div class="date" th:text="${dat.date}">
-                            </div>
-                        </td>
-                    </th:block>
+                        </div>
+                    </td>
+                    <td class="normal_day"
+                        th:unless="${dateStat.index}==6 or ${dat.value}=='today' or ${dateStat.index}%7==0">
+                        <div class="date" th:text="${dat.date}">
+                        </div>
+                    </td>
                 </th:block>
                 </tbody>
             </table>
