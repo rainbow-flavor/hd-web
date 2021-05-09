@@ -34,7 +34,8 @@ public class HomeController {
     }
 
     @GetMapping
-    public String calendar(Model model, HttpServletRequest req, DateData dateData) {
+    public String calendar(Model model, HttpServletRequest req, @RequestParam Integer year, @RequestParam Integer month, DateData dateData) {
+        List<ScheduleDto> scheduleDtos = scheduleService.getScheduleInMonth(year, month);
 
         Calendar cal = Calendar.getInstance();
         DateData calendarData;

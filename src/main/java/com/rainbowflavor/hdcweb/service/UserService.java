@@ -21,7 +21,7 @@ public class TestService {
     public Long joinUser(User user) {
         UserRole userRole = new UserRole();
         User saveUser = userRepository.save(user);
-        Role findRole = roleRepository.getOne(1L);
+        Role findRole = roleRepository.findByRole(ERole.ROLE_ADMIN);
         userRole.setUser(saveUser);
         userRole.setRole(findRole);
         UserRole saveUserRole = userRoleRepository.save(userRole);
