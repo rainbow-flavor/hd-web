@@ -2,35 +2,34 @@ package com.rainbowflavor.hdcweb.service;
 
 import com.rainbowflavor.hdcweb.domain.User;
 import com.rainbowflavor.hdcweb.repository.JpaRoleRepository;
+import com.rainbowflavor.hdcweb.repository.JpaUserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class TestServiceUser {
 
     @Autowired
     UserService userService;
-    @Autowired JpaRoleRepository jpaRoleRepository;
-    @Autowired JpaRoleRepository roleRepository;
+    @Autowired
+    JpaUserRepository userRepository;
 
     @Test
+    @Transactional
     @DisplayName("User and Role Insert")
     void join() {
-        User user = User.builder()
-                .address("seoul")
-                .email("irostub@gmail.com")
-                .position("top")
-                .name("stub")
-                .phone("010-0000-0000")
-                .birth(new Date())
-                .password("qw1234")
-                .build();
+/*
+        Long userId = userService.joinUser(user);
+        User findUser = userRepository.getOne(userId);
 
-        userService.joinUser(user);
-
+        assertThat(findUser.getEmail()).isEqualTo(user.getEmail());*/
     }
 }
