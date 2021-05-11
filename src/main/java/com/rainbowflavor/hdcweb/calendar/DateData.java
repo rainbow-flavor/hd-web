@@ -18,7 +18,6 @@ public class DateData {
     String month = "";
     String date = "";
     String value = "";
-    String schedule = "";
     String scheduleDetail = "";
 
     public Map<String, Integer> todayInfo(DateData dateData) {
@@ -93,12 +92,11 @@ public class DateData {
         return before_after_data;
     }
 
-    public DateData(String year, String month, String date, String value, String schedule, String scheduleDetail) {
+    public DateData(String year, String month, String date, String value, String scheduleDetail) {
         this.year = year;
         this.month = month;
         this.date = date;
         this.value = value;
-        this.schedule = schedule;
         this.scheduleDetail = scheduleDetail;
     }
 
