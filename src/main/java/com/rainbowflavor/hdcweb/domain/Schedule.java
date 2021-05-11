@@ -28,4 +28,12 @@ public class Schedule extends AuditingTimeStamp {
 
     @Column
     private String scheduleDetail;
+
+    @Builder
+    public Schedule(User user, Date scheduleStartDate, Date scheduleEndDate, String scheduleDetail) {
+        this.user = user;
+        this.scheduleStartDate = scheduleStartDate;
+        this.scheduleEndDate = scheduleEndDate;
+        this.scheduleDetail = scheduleDetail;
+    }
 }
