@@ -1,5 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/sign-layout}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +17,7 @@
 </head>
 
 <body class="js-background">
-<div id="container-signin-card" class="card">
+<div layout:fragment="sign" id="container-signin-card" class="card">
   <div class="card-body">
     <form class="form-signin" action="/index" method="post">
       <div class="text-center mb-4">
