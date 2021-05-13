@@ -1,23 +1,15 @@
 <!doctype html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/sign-layout}">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Handok IT Login</title>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
-
-  <!-- Custom styles for this template -->
-  <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 
 <body class="js-background">
-<div layout:fragment="sign" id="container-signup-card" class="card">
+<div th:fragment="signup-card" id="container-signup-card" class="card">
   <div class="card-body">
     <form class="form-signup" action="/signup" method="post">
       <div class="text-center mb-4">
