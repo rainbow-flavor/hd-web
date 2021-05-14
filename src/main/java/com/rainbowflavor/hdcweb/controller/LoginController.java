@@ -29,11 +29,11 @@ public class LoginController {
         return "page/signin";
     }
 
-    @ResponseBody
     @PostMapping(value="/signup")
     public String signUp(@ModelAttribute SignupDto signupDto){
+        log.info("signup controller = {}", signupDto);
         userService.joinUser(signupDto);
-        return "ok";
+        return "redirect:/signin";
     }
 }
 
