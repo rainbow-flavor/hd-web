@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Slf4j
@@ -91,11 +92,11 @@ public class HomeController {
             }
         }
 
+
         //배열에 담음
         model.addAttribute("dateList", dateList);		//날짜 데이터 배열
         model.addAttribute("todayInfo", today_info);
-
-        model.addAttribute("schedules", scheduleDtos);
+        model.addAttribute("scheduleDtos", scheduleDtos);
         return "contents/calendar";
 
     }
