@@ -1,34 +1,26 @@
 <!doctype html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/sign-layout}">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Handok IT Login</title>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
-
-  <!-- Custom styles for this template -->
-  <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 
 <body class="js-background">
-<div layout:fragment="sign" id="container-signup-card" class="card">
+<div th:fragment="signup-card" id="container-signup-card" class="card">
   <div class="card-body">
-    <form class="form-signup" action="/signup" method="post">
+    <form class="form-signup" th:action="@{/signup}" method="post">
       <div class="text-center mb-4">
         <h2 class="h2 mb-3 font-weight-normal">Handok Sign Up</h2>
       </div>
-
+      <!--TODO: email 유일값 검증 버튼 넣어야함-->
       <div class="form-label-group">
         <input type="email" name="email" id="input-signup-email" class="form-control" placeholder="Email address" required autofocus>
         <label for="input-signup-email">Email address</label>
       </div>
-
+      <!--TODO: password 최소 요구 사항 검증-->
       <div class="form-label-group">
         <input type="password" name="password" id="input-signup-password" class="form-control" placeholder="Password" required>
         <label for="input-signup-password">Password</label>
@@ -55,7 +47,7 @@
       </div>
 
       <div class="form-label-group">
-        <input type="date" name="birthday" id="input-signup-birthday" class="form-control" value="0000-00-00" required>
+        <input type="date" name="birth" id="input-signup-birthday" class="form-control" value="0000-00-00" required>
         <label for="input-signup-birthday">birthday</label>
       </div>
 
@@ -66,7 +58,7 @@
   </div>
 </div>
 <th:block th:replace="fragments/scripts ::scripts"/>
-<script type="text/javascript" src="/js/login.js"></script>
-<script type="text/javascript" src="/js/background.js"></script>
+<script type="text/javascript" src="/static/js/login.js"></script>
+<script type="text/javascript" src="/static/js/background.js"></script>
 </body>
 </html>
