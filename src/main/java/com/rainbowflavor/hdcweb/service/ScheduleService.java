@@ -35,6 +35,8 @@ public class ScheduleService {
         if (year == null || month == null) {
             year = cal.get(Calendar.YEAR);
             month = cal.get(Calendar.MONTH);
+        } else if (month == 0) {
+            month = 1;
         }
 
         startDateToString = year + "-" + month + "-1";
@@ -51,7 +53,7 @@ public class ScheduleService {
                 Date date = new Date(startCal.getTimeInMillis());
                 scheduleDto.setScheduleDay(date);
                 scheduleDto.setYear(String.valueOf(startCal.get(Calendar.YEAR)));
-                scheduleDto.setMonth(String.valueOf(startCal.get(Calendar.MONTH)+1));
+                scheduleDto.setMonth(String.valueOf(startCal.get(Calendar.MONTH)));
                 scheduleDto.setDate(String.valueOf(startCal.get(Calendar.DATE)));
                 scheduleDto.setScheduleDetail(attr.getScheduleDetail());
                 scheduleDtos.add(scheduleDto);
