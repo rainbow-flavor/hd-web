@@ -17,18 +17,18 @@
 <body class="js-background">
 <div id="container-signin-card" class="card">
   <div class="card-body">
-    <form class="form-signin" action="/index" method="post">
+    <form class="form-signin" th:action="@{/login}" action="/login" method="post">
       <div class="text-center mb-4">
         <h2 class="h2 mb-3 font-weight-normal">Handok Login</h2>
       </div>
 
       <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputEmail">Email address</label>
+        <input type="text" id="inputName" name="username" class="form-control" placeholder="username" required autofocus>
+        <label for="inputName">Username</label>
       </div>
 
       <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
         <label for="inputPassword">Password</label>
       </div>
 
@@ -37,8 +37,10 @@
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Sign In</button>
+      <button class="btn btn-lg btn-outline-primary btn-block" value="Login" type="submit">Sign In</button>
       <hr>
+      <!--TODO 이 곳에서 로그인 실패 시 메세지 출력-->
+      <div th:if="${param.error}"></div>
       <h5 class="h5 font-weight-normal text-center">Don't have an Account?</h5>
       <h3 class="h3 mb-3 font-weight-normal text-center">Register Here</h3>
       <button id="btn-signup" class="btn btn-lg btn-outline-info btn-block" type="button">Sign Up</button>
@@ -49,7 +51,7 @@
 <th:block th:replace="page/signup :: signup-card"/>
 
 <th:block th:replace="fragments/scripts ::scripts"/>
-<script type="text/javascript" th:src="@{/js/login.js}" src="/js/login.js"></script>
-<script type="text/javascript" th:src="@{/js/background.js}" src="/js/background.js"></script>
+<script type="text/javascript" th:src="@{/js/login.js}" src="../../static/js/login.js"></script>
+<script type="text/javascript" th:src="@{/js/background.js}" src="../../static/js/background.js"></script>
 </body>
 </html>
