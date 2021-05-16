@@ -20,12 +20,12 @@ public class LoginController {
 
     @GetMapping
     public String rootPage(){
-        return "redirect:/signin";
+        return "redirect:/index";
     }
 
-    @GetMapping(value="/signin")
-    public String loginPage(HttpServletRequest request){
-        log.info("Login Controller = {}", request);
+    @GetMapping(value="/login")
+    public String loginPage(){
+        log.info("Login Controller Path = /login");
         return "page/signin";
     }
 
