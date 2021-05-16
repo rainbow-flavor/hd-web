@@ -13,7 +13,8 @@ import java.util.Set;
 @Entity
 @Table(uniqueConstraints =
         @UniqueConstraint(columnNames = "email"))
-@Data
+@Getter
+@Setter
 public class User{
     @Id @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
