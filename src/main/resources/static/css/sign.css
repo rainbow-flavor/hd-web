@@ -36,7 +36,8 @@ body {
 
 .card {
     border-radius: 1em;
-    min-width: 30vw;
+    min-width: 25vw;
+    max-width: 30vw;
     background-color:rgba(0,0,0,0.8);
 }
 

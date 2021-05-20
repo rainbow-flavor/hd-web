@@ -18,7 +18,13 @@ public class ScheduleDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endScheduleDate;
 
-    private String scheduleDay;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date scheduleDay;
 
     private String scheduleDetail;
+
+    private String year;
+    private String month;
+    private String date;
+
 }
