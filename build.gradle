@@ -29,6 +29,10 @@ dependencies {
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	implementation group: 'org.webjars', name: 'bootstrap', version: '4.6.0-1'
 
+	// email authentication dependency
+	implementation group: 'javax.mail', name: 'mail', version: '1.4.7'
+
+
 	// has bug jdk11 up, WARNING: An illegal reflective access operation has occurred
 	implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.4.1'
 
