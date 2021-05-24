@@ -12,16 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping(value={ ConstantUrl.ROOT})
 @Controller
 public class LoginController {
 
     private final UserService userService;
-
-    @GetMapping
-    public String rootPage(){
-        return "redirect:/index";
-    }
 
     @GetMapping(value="/login")
     public String loginPage(){

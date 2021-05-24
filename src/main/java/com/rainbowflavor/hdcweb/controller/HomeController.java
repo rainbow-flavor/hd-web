@@ -22,7 +22,7 @@ import java.util.*;
 
 @Slf4j
 @Controller
-@RequestMapping(value= ConstantUrl.INDEX)
+@RequestMapping(value= ConstantUrl.ROOT)
 @RequiredArgsConstructor
 public class HomeController {
 
@@ -46,7 +46,7 @@ public class HomeController {
         return "redirect:/index";
     }
 
-    @GetMapping
+    @GetMapping(value={"/index","/"})
     public String calendar(Model model, HttpServletRequest req, @RequestParam(defaultValue = "") Integer year, @RequestParam(defaultValue = "") Integer month, DateData dateData) {
         List<ScheduleDto> scheduleDtos = scheduleService.getScheduleInMonth(year, month);
 
