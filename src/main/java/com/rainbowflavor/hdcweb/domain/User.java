@@ -43,6 +43,9 @@ public class User{
     @Temporal(TemporalType.DATE)
     private Date birth;
 
+    @Column
+    private Boolean emailVerify;
+
     @OneToMany(mappedBy = "user")
     private Set<UserRole> roles = new HashSet<>();
 
