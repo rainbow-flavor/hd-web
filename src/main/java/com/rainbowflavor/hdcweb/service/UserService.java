@@ -1,9 +1,6 @@
 package com.rainbowflavor.hdcweb.service;
 
-import com.rainbowflavor.hdcweb.domain.ERole;
-import com.rainbowflavor.hdcweb.domain.Role;
-import com.rainbowflavor.hdcweb.domain.User;
-import com.rainbowflavor.hdcweb.domain.UserRole;
+import com.rainbowflavor.hdcweb.domain.*;
 import com.rainbowflavor.hdcweb.dto.SignupDto;
 import com.rainbowflavor.hdcweb.mapstruct.sign.SignupMapper;
 import com.rainbowflavor.hdcweb.repository.JpaRoleRepository;
@@ -24,6 +21,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class UserService implements UserDetailsService {
+    private final UserConfirmTokenService userConfirmTokenService;
     private final JpaRoleRepository roleRepository;
     private final JpaUserRepository userRepository;
     private final JpaUserRoleRepository userRoleRepository;
@@ -62,5 +60,12 @@ public class UserService implements UserDetailsService {
                 .password(user.getPassword())
                 .roles("ADMIN")
                 .build();
+    }
+
+    public void confirmEmail(String token) {
+        UserConfirmToken findConfirmationToken = userConfirmTokenService.findByIdAndExpirationDateAfterAndExpired(token);
+        User findUser = findUser(findConfirmationToken.getUserId());
+        findConfirmationToken.useToken();
+
     }
 }
