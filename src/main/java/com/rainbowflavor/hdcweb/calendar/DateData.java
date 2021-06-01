@@ -27,8 +27,10 @@ public class DateData {
         calendar.set(Integer.parseInt(dateData.getYear()), Integer.parseInt(dateData.getMonth()), 1);
 
         int startDay = calendar.getMinimum(Calendar.DATE);
-        int endDay = calendar.getMaximum(Calendar.DAY_OF_MONTH);
+        int endDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         int start = calendar.get(Calendar.DAY_OF_WEEK);
+
+        System.out.println("endDay = " + endDay);
 
         Calendar todayCalendar = Calendar.getInstance();
         SimpleDateFormat ySDF = new SimpleDateFormat("yyyy");
