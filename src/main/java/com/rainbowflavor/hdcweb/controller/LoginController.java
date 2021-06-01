@@ -19,14 +19,23 @@ public class LoginController {
 
     @GetMapping(value="/login")
     public String loginPage(){
-        log.info("Login Controller Path = /login");
+        log.info("login controller = /login");
         return "page/signin";
     }
 
     @PostMapping(value="/signup")
     public String signUp(@ModelAttribute SignupDto signupDto){
         log.info("signup controller = {}", signupDto);
+
         userService.joinUser(signupDto);
+        return "redirect:/signin";
+    }
+
+    @GetMapping("/confirm-signup")
+    public String confirmSignupToken(@RequestParam String token){
+        log.info("confirm signup token controller = {}", token);
+
+        userService.confirmEmail(token);
         return "redirect:/signin";
     }
 }
