@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class UserConfirmToken {
 
     private static final long EMAIL_TOKEN_TTL = 10L;
@@ -33,7 +33,7 @@ public class UserConfirmToken {
     private boolean expired;
 
     @Column
-    private String userId;
+    private Long userId;
 
     @CreatedDate
     @Column(updatable = false)
@@ -42,7 +42,7 @@ public class UserConfirmToken {
     @LastModifiedDate
     private LocalDateTime lastModifiedDateTime;
 
-    public static UserConfirmToken createEmailConfirmToken(String userId) {
+    public static UserConfirmToken createEmailConfirmToken(Long userId) {
         UserConfirmToken userConfirmToken = new UserConfirmToken();
         userConfirmToken.expirationDateTime = LocalDateTime.now().minusMinutes(EMAIL_TOKEN_TTL);
         userConfirmToken.userId = userId;
