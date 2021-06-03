@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .mvcMatchers("/", "/favicon.ico", "/css/**", "/js/**", "/webjars/**", "/img/**", "/login", "/signup", "/calendar", "/index/**").permitAll()
+                .mvcMatchers("/", "/favicon.ico", "/css/**", "/js/**", "/webjars/**", "/img/**", "/login", "/signup", "/calendar", "/index/**","/confirm-signup/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
