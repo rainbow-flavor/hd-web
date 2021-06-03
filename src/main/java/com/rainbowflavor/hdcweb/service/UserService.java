@@ -4,6 +4,7 @@ import com.rainbowflavor.hdcweb.domain.*;
 import com.rainbowflavor.hdcweb.dto.SignupDto;
 import com.rainbowflavor.hdcweb.mapstruct.sign.SignupMapper;
 import com.rainbowflavor.hdcweb.repository.JpaRoleRepository;
+import com.rainbowflavor.hdcweb.repository.JpaUserConfirmTokenRepository;
 import com.rainbowflavor.hdcweb.repository.JpaUserRepository;
 import com.rainbowflavor.hdcweb.repository.JpaUserRoleRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ import java.util.Optional;
 @Service
 public class UserService implements UserDetailsService {
     private final UserConfirmTokenService userConfirmTokenService;
+    private final JpaUserConfirmTokenRepository userConfirmTokenRepository;
     private final JpaRoleRepository roleRepository;
     private final JpaUserRepository userRepository;
     private final JpaUserRoleRepository userRoleRepository;
@@ -39,6 +41,7 @@ public class UserService implements UserDetailsService {
         userRole.setUser(saveUser);
         userRole.setRole(findRole);
 
+        userConfirmTokenService.createEmailConfirmToken(saveUser.getId());
         userRoleRepository.save(userRole);
 
         return SignupMapper.INSTANCE.toDto(saveUser);
@@ -62,10 +65,13 @@ public class UserService implements UserDetailsService {
                 .build();
     }
 
+    @Transactional
     public void confirmEmail(String token) {
         UserConfirmToken findConfirmationToken = userConfirmTokenService.findByIdAndExpirationDateAfterAndExpired(token);
         User findUser = findUser(findConfirmationToken.getUserId());
         findConfirmationToken.useToken();
-
+        findUser.setEmailVerify(true);
+        userConfirmTokenRepository.save(findConfirmationToken);
+        userRepository.save(findUser);
     }
 }
