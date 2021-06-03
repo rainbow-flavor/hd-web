@@ -2,6 +2,7 @@ package com.rainbowflavor.hdcweb.domain;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -44,6 +45,7 @@ public class User{
     private Date birth;
 
     @Column
+    @ColumnDefault("0")
     private Boolean emailVerify;
 
     @OneToMany(mappedBy = "user")
