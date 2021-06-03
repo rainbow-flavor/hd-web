@@ -28,7 +28,7 @@ public class LoginController {
         log.info("signup controller = {}", signupDto);
 
         userService.joinUser(signupDto);
-        return "redirect:/signin";
+        return "page/mail-auth";
     }
 
     @GetMapping("/confirm-signup")
