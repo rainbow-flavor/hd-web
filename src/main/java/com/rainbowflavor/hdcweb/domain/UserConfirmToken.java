@@ -1,6 +1,5 @@
 package com.rainbowflavor.hdcweb.domain;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -44,7 +43,7 @@ public class UserConfirmToken {
 
     public static UserConfirmToken createEmailConfirmToken(Long userId) {
         UserConfirmToken userConfirmToken = new UserConfirmToken();
-        userConfirmToken.expirationDateTime = LocalDateTime.now().minusMinutes(EMAIL_TOKEN_TTL);
+        userConfirmToken.expirationDateTime = LocalDateTime.now().plusMinutes(EMAIL_TOKEN_TTL);
         userConfirmToken.userId = userId;
         return userConfirmToken;
     }
