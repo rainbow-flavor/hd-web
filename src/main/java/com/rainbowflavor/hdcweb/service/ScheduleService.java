@@ -51,6 +51,7 @@ public class ScheduleService {
             while (startCal.compareTo(endCal) != 1) {
                 ScheduleDto scheduleDto = new ScheduleDto();
                 Date date = new Date(startCal.getTimeInMillis());
+                scheduleDto.setId(attr.getId());
                 scheduleDto.setScheduleDay(date);
                 scheduleDto.setYear(String.valueOf(startCal.get(Calendar.YEAR)));
                 scheduleDto.setMonth(String.valueOf(startCal.get(Calendar.MONTH)));

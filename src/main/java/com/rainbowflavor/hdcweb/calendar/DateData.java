@@ -30,8 +30,6 @@ public class DateData {
         int endDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         int start = calendar.get(Calendar.DAY_OF_WEEK);
 
-        System.out.println("endDay = " + endDay);
-
         Calendar todayCalendar = Calendar.getInstance();
         SimpleDateFormat ySDF = new SimpleDateFormat("yyyy");
         SimpleDateFormat mSDF = new SimpleDateFormat("M");

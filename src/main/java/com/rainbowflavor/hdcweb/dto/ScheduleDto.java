@@ -12,6 +12,8 @@ public class ScheduleDto {
 
     private String userName;
 
+    private Long id;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startScheduleDate;
 

@@ -13,3 +13,6 @@ function scheduleAddFunc(){
     $("#exampleModal").modal('hide');
 }
 
+function actionHandler(){
+
+}

@@ -12,8 +12,6 @@
 </head>
 <body>
 <div layout:fragment="content" class="calendar_content container-fluid">
-    <script layout:fragment="custom_scripts" th:src="@{/js/calendar.js}" type="text/javascript"></script>
-    <form class="my-4" name="calendarFrm" id="calendarFrm" action="" method="GET">
         <div class="calendar">
             <!--날짜 네비게이션  -->
             <div class="navigation">
@@ -80,21 +78,33 @@
                         <div class="sun" th:text="${dat.date}">
                         </div>
                         <th:block th:each="scheduleDto,scheduleStat : ${scheduleDtos}">
-                            <div th:if="${dat.year}==${scheduleDto.year} and ${dat.month}==${scheduleDto.month} and ${dat.date}==${scheduleDto.date}" th:text="${scheduleDto.scheduleDetail}"></div>
+                            <th:block th:if="${dat.year}==${scheduleDto.year} and ${dat.month}==${scheduleDto.month} and ${dat.date}==${scheduleDto.date}">
+                                <span th:text="${scheduleDto.scheduleDetail}"></span>
+                                <input type="hidden" th:value="${scheduleDto.id}">
+                                <button>x</button>
+                            </th:block>
                         </th:block>
                     </td>
                     <td class="today" th:if="${dat.value} == 'today'">
                         <div class="date" th:text="${dat.date}">
                         </div>
                         <th:block th:each="scheduleDto,scheduleStat : ${scheduleDtos}">
-                            <div th:if="${dat.year}==${scheduleDto.year} and ${dat.month}==${scheduleDto.month} and ${dat.date}==${scheduleDto.date}" th:text="${scheduleDto.scheduleDetail}"></div>
+                            <th:block th:if="${dat.year}==${scheduleDto.year} and ${dat.month}==${scheduleDto.month} and ${dat.date}==${scheduleDto.date}">
+                                <span th:text="${scheduleDto.scheduleDetail}"></span>
+                                <input type="hidden" th:value="${scheduleDto.id}">
+                                <button>x</button>
+                            </th:block>
                         </th:block>
                     </td>
-                    <td class="sat_day" th:if="${dateStat.index}==6">
+                    <td class="sat_day" th:if="${dateStat.index}==6 and ${dat.value} != 'today'">
                         <div class="sat" th:text="${dat.date}">
                         </div>
                         <th:block th:each="scheduleDto,scheduleStat : ${scheduleDtos}">
-                            <div th:if="${dat.year}==${scheduleDto.year} and ${dat.month}==${scheduleDto.month} and ${dat.date}==${scheduleDto.date}" th:text="${scheduleDto.scheduleDetail}"></div>
+                            <th:block th:if="${dat.year}==${scheduleDto.year} and ${dat.month}==${scheduleDto.month} and ${dat.date}==${scheduleDto.date}">
+                                <span th:text="${scheduleDto.scheduleDetail}"></span>
+                                <input type="hidden" th:value="${scheduleDto.id}">
+                                <button onclick="actionHandler()">x</button>
+                            </th:block>
                         </th:block>
                     </td>
                     <td class="normal_day"
@@ -102,17 +112,21 @@
                         <div class="date" th:text="${dat.date}">
                         </div>
                         <th:block th:each="scheduleDto,scheduleStat : ${scheduleDtos}">
-                            <div th:if="${dat.year}==${scheduleDto.year} and ${dat.month}==${scheduleDto.month} and ${dat.date}==${scheduleDto.date}" th:text="${scheduleDto.scheduleDetail}"></div>
+                            <th:block th:if="${dat.year}==${scheduleDto.year} and ${dat.month}==${scheduleDto.month} and ${dat.date}==${scheduleDto.date}">
+                                <span th:text="${scheduleDto.scheduleDetail}"></span>
+                                <input type="hidden" th:value="${scheduleDto.id}">
+                                <button>x</button>
+                            </th:block>
                         </th:block>
                     </td>
                 </th:block>
                 </tbody>
             </table>
         </div>
-    </form>
     <th:block th:replace="fragments/modal :: modal">
 
     </th:block>
 </div>
+    <script layout:fragment="custom_scripts" th:src="@{/js/calendar.js}" type="text/javascript"></script>
 </body>
 </html>

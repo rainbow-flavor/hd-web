@@ -29,7 +29,7 @@ public class HomeController {
     private final ScheduleService scheduleService;
     private final UserService userService;
 
-    @PostMapping(value = "/schedules")
+    @PostMapping(value = "/index/schedules")
     public String schedules(@ModelAttribute ScheduleDto scheduleDto) {
 
         User user = userService.findUser(1L);
