@@ -74,40 +74,37 @@
                 <th:block th:each="dat,dateStat : ${dateList}">
                     <tr th:if="${dateStat.index}%7==0">
                     </tr>
-                    <td class="sun_day" th:if="${dateStat.index}%7==0 and ${dat.value} != 'today'">
+                    <td onclick="tdActionHandler(event)" class="sun_day" th:if="${dateStat.index}%7==0 and ${dat.value} != 'today'">
                         <div class="sun" th:text="${dat.date}">
                         </div>
                         <th:block th:each="scheduleDto,scheduleStat : ${scheduleDtos}">
                             <th:block th:if="${dat.year}==${scheduleDto.year} and ${dat.month}==${scheduleDto.month} and ${dat.date}==${scheduleDto.date}">
                                 <span th:text="${scheduleDto.scheduleDetail}"></span>
                                 <input type="hidden" th:value="${scheduleDto.id}">
-                                <button>x</button>
                             </th:block>
                         </th:block>
                     </td>
-                    <td class="today" th:if="${dat.value} == 'today'">
+                    <td onclick="tdActionHandler(event)" class="today" th:if="${dat.value} == 'today'">
                         <div class="date" th:text="${dat.date}">
                         </div>
                         <th:block th:each="scheduleDto,scheduleStat : ${scheduleDtos}">
                             <th:block th:if="${dat.year}==${scheduleDto.year} and ${dat.month}==${scheduleDto.month} and ${dat.date}==${scheduleDto.date}">
                                 <span th:text="${scheduleDto.scheduleDetail}"></span>
                                 <input type="hidden" th:value="${scheduleDto.id}">
-                                <button>x</button>
                             </th:block>
                         </th:block>
                     </td>
-                    <td class="sat_day" th:if="${dateStat.index}==6 and ${dat.value} != 'today'">
+                    <td onclick="tdActionHandler(event)" class="sat_day" th:if="${dateStat.index}==6 and ${dat.value} != 'today'">
                         <div class="sat" th:text="${dat.date}">
                         </div>
                         <th:block th:each="scheduleDto,scheduleStat : ${scheduleDtos}">
                             <th:block th:if="${dat.year}==${scheduleDto.year} and ${dat.month}==${scheduleDto.month} and ${dat.date}==${scheduleDto.date}">
                                 <span th:text="${scheduleDto.scheduleDetail}"></span>
                                 <input type="hidden" th:value="${scheduleDto.id}">
-                                <button onclick="actionHandler()">x</button>
                             </th:block>
                         </th:block>
                     </td>
-                    <td class="normal_day"
+                    <td onclick="tdActionHandler(event)" class="normal_day"
                         th:unless="${dateStat.index}==6 or ${dat.value}=='today' or ${dateStat.index}%7==0">
                         <div class="date" th:text="${dat.date}">
                         </div>
@@ -115,7 +112,6 @@
                             <th:block th:if="${dat.year}==${scheduleDto.year} and ${dat.month}==${scheduleDto.month} and ${dat.date}==${scheduleDto.date}">
                                 <span th:text="${scheduleDto.scheduleDetail}"></span>
                                 <input type="hidden" th:value="${scheduleDto.id}">
-                                <button>x</button>
                             </th:block>
                         </th:block>
                     </td>

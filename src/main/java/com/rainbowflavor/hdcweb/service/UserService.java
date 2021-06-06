@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.Optional;
 
 @Slf4j
@@ -52,6 +53,12 @@ public class UserService implements UserDetailsService {
 
     public User findUser(Long userId) {
         return userRepository.getOne(userId);
+    }
+
+    public User findUser(String name) {
+        Optional<User> findByName = userRepository.findByName(name);
+        User user = findByName.get();
+        return user;
     }
 
     @Override

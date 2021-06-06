@@ -32,7 +32,9 @@ public class HomeController {
     @PostMapping(value = "/index/schedules")
     public String schedules(@ModelAttribute ScheduleDto scheduleDto) {
 
+//        User user = userService.findUser(scheduleDto.getUserName());
         User user = userService.findUser(1L);
+
 
         Schedule schedule = Schedule.builder()
                 .user(user)
