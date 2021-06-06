@@ -9,6 +9,7 @@ import com.rainbowflavor.hdcweb.repository.JpaUserRepository;
 import com.rainbowflavor.hdcweb.repository.JpaUserRoleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.mapstruct.factory.Mappers;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,11 +29,13 @@ public class UserService implements UserDetailsService {
     private final JpaUserRepository userRepository;
     private final JpaUserRoleRepository userRoleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final SignupMapper signupMapper = Mappers.getMapper(SignupMapper.class);
+
 
     @Transactional
     public SignupDto joinUser(SignupDto signupDto) {
         signupDto.setPassword(passwordEncoder.encode(signupDto.getPassword()));
-        User user = SignupMapper.INSTANCE.toEntity(signupDto);
+        User user = signupMapper.toEntity(signupDto);
 
         User saveUser = userRepository.save(user);
         Role findRole = roleRepository.findByRole(ERole.ROLE_ADMIN);
@@ -44,7 +47,7 @@ public class UserService implements UserDetailsService {
         userConfirmTokenService.createEmailConfirmToken(saveUser.getId());
         userRoleRepository.save(userRole);
 
-        return SignupMapper.INSTANCE.toDto(saveUser);
+        return signupMapper.toDto(saveUser);
     }
 
     public User findUser(Long userId) {
@@ -52,14 +55,13 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> findUser = userRepository.findByName(username);
+        Optional<User> findUser = userRepository.findByUsername(username);
         User user = findUser.orElseThrow(() -> new UsernameNotFoundException(username));
-        log.debug("login user = {}",user);
-
+        boolean enable = !user.isEmailVerify();
         return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getName())
+                .username(user.getUsername())
+                .disabled(enable)
                 .password(user.getPassword())
                 .roles("ADMIN")
                 .build();
