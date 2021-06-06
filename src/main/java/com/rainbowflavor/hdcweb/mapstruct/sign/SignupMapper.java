@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 //componentModel 속성을 안주면 spring bean 으로 등록되지 않음
-@Mapper
+@Mapper(componentModel = "spring")
 public interface SignupMapper extends GenericMapper<SignupDto, User> {
     SignupMapper INSTANCE = Mappers.getMapper(SignupMapper.class);
 }
