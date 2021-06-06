@@ -46,7 +46,7 @@ public class User{
 
     @Column
     @ColumnDefault("0")
-    private Boolean emailVerify;
+    private boolean emailVerify;
 
     @OneToMany(mappedBy = "user")
     private Set<UserRole> roles = new HashSet<>();
