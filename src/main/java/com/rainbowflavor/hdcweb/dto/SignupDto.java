@@ -14,6 +14,7 @@ import java.util.Date;
 @ToString
 public class SignupDto {
     private String name;
+    private String username;
     private String password;
     private String email;
     private String position;
