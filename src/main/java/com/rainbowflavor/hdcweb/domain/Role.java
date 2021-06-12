@@ -1,7 +1,9 @@
 package com.rainbowflavor.hdcweb.domain;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,19 +11,17 @@ import java.util.Set;
 
 @Entity
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private ERole role;
+    @Column
+    private ERole name;
 
     @OneToMany(mappedBy = "role")
     private Set<UserRole> userRoles = new HashSet<>();
-
-    public Role(ERole role) {
-        this.role = role;
-    }
 }

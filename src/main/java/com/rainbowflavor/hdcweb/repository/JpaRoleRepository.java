@@ -5,5 +5,5 @@ import com.rainbowflavor.hdcweb.domain.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface JpaRoleRepository extends JpaRepository<Role, Long> {
-    Role findByRole(ERole eRole);
+    Role findByName(ERole eRole);
 }
