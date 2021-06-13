@@ -9,6 +9,7 @@
     <!-- 공통 css, js -->
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/sidebar.css}">
+    <link rel="stylesheet" th:href="@{/css/right-sidebar.css}">
 
     <title>Handok IT ERP</title>
     <!--custom css-->
@@ -27,6 +28,7 @@
         <!--footer-->
         <th:block th:replace="fragments/footer :: footer"/>
     </div>
+    <th:block th:replace="fragments/right-sidebar :: right-sidebar"/>
 </div>
 <!--script-->
 <th:block th:replace="fragments/scripts :: scripts"/>
