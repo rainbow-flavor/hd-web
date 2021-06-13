@@ -17,8 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.Optional;
+import java.util.Set;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -39,7 +39,7 @@ public class UserService implements UserDetailsService {
         User user = signupMapper.toEntity(signupDto);
 
         User saveUser = userRepository.save(user);
-        Role findRole = roleRepository.findByRole(ERole.ROLE_ADMIN);
+        Role findRole = roleRepository.findByName(ERole.ROLE_ADMIN);
 
         UserRole userRole = new UserRole();
         userRole.setUser(saveUser);
@@ -65,12 +65,17 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> findUser = userRepository.findByUsername(username);
         User user = findUser.orElseThrow(() -> new UsernameNotFoundException(username));
+        Set<UserRole> userRoles = user.getUserRoles();
+        for (UserRole userRole : userRoles) {
+            ERole name = userRole.getRole().getName();
+            System.out.println(name);
+        }
         boolean enable = !user.isEmailVerify();
+
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getUsername())
                 .disabled(enable)
                 .password(user.getPassword())
-                .roles("ADMIN")
                 .build();
     }
 
