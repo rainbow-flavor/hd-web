@@ -36,7 +36,7 @@ public class LoginController {
         log.info("confirm signup token controller = {}", token);
 
         userService.confirmEmail(token);
-        return "redirect:/signin";
+        return "page/signin";
     }
 }
 
