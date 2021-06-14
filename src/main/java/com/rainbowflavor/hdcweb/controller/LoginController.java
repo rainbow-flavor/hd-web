@@ -31,6 +31,11 @@ public class LoginController {
         return "page/mail-auth";
     }
 
+    @GetMapping("/mail-auth")
+    public String testt() {
+        return "page/mail-auth";
+    }
+
     @GetMapping("/confirm-signup")
     public String confirmSignupToken(@RequestParam String token){
         log.info("confirm signup token controller = {}", token);
