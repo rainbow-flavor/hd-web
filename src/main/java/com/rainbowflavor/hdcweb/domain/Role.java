@@ -1,6 +1,5 @@
 package com.rainbowflavor.hdcweb.domain;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
