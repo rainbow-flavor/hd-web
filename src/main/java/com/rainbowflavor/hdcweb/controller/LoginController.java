@@ -32,7 +32,7 @@ public class LoginController {
     }
 
     @GetMapping("/mail-auth")
-    public String testt() {
+    public String mailAuth() {
         return "page/mail-auth";
     }
 
@@ -41,7 +41,7 @@ public class LoginController {
         log.info("confirm signup token controller = {}", token);
 
         userService.confirmEmail(token);
-        return "page/signin";
+        return "page/mail-auth-dest";
     }
 }
 
