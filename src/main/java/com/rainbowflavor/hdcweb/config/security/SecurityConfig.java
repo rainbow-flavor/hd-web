@@ -19,25 +19,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf()
-                .disable()
+                .csrf().disable()
                 .authorizeRequests()
                 .mvcMatchers("/", "/favicon.ico", "/css/**", "/js/**", "/webjars/**", "/img/**", "/login", "/signup", "/mail-auth","/calendar", "/index/**","/confirm-signup/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+                .anyRequest().authenticated();
+
         http.formLogin()
                 .defaultSuccessUrl("/index")
                 .loginPage("/login")
                 .permitAll();
 
         http.logout().logoutSuccessUrl("/login");
-    }
-
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 
     @Bean
