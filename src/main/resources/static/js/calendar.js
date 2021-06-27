@@ -23,12 +23,13 @@ function tdActionHandler(e = event) {
 
     if(e.target == e.currentTarget){
         const workList = document.getElementById("work-list");
-        if(workList.children.length != 0 ){
+        if(workList.children.length != 0 ){ //만약 이전에 클릭이벤트가 일어나서 이미 사이드바에 결과가 출력되어있을경우 해당 내용을 삭제
             while (workList.hasChildNodes()) {
                 workList.removeChild(workList.firstChild);
             }
         }
 
+        //클릭한 날짜의 모든 내용 출력
         for (let icChildren = 0; icChildren < e.target.children.length; icChildren++) {
             if(e.target.children[icChildren].localName == "p"){
                 const createPTag = document.createElement("p");

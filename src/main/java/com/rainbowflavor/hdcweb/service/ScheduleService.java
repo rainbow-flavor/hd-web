@@ -4,12 +4,10 @@ import com.rainbowflavor.hdcweb.domain.Schedule;
 import com.rainbowflavor.hdcweb.dto.ScheduleDto;
 import com.rainbowflavor.hdcweb.repository.JpaScheduleRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
