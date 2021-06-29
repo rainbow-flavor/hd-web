@@ -2,13 +2,11 @@ package com.rainbowflavor.hdcweb.controller;
 
 import com.rainbowflavor.hdcweb.dto.SignupDto;
 import com.rainbowflavor.hdcweb.service.UserService;
-import com.rainbowflavor.hdcweb.string.ConstantUrl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @RequiredArgsConstructor

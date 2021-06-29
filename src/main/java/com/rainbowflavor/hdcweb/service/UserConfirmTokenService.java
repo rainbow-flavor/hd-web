@@ -13,7 +13,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class UserConfirmTokenService {
-    private final static String RECEIVE_EMAIL = "palocog296@seatto.com";
+    private final static String RECEIVE_EMAIL = "degeh91710@nnacell.com";
 
     private final JpaUserConfirmTokenRepository repository;
     private final EmailSenderService emailSenderService;
